@@ -7,7 +7,7 @@ const ejs = require('ejs');
 const PORT = process.env.PORT || 3000;
 const pageRoute = require('./routes/pageRoute');
 const messageController = require('./controllers/messageController');
-
+const ticketController = require('./controllers/ticketController');
 
 
 // MongoDB'ye bağlan
@@ -41,6 +41,7 @@ app.use(methodOverride('_method', {
 app.use('/', pageRoute);
 app.use('/ticket', pageRoute);
 app.post('/', messageController.createMessage);
+app.post('/ticket', ticketController.createTicket);
 
 app.listen(PORT, () => {
     console.log(`Server Running on http://localhost/${PORT}`)
